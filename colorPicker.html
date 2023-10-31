@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #colorPickerBtn {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    #magnifier {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      display: none;
+    }
+  </style>
+  <title>Color Picker</title>
+</head>
+<body>
+  <button id="colorPickerBtn">Pick Color</button>
+  <div id="magnifier"></div>
+  <script>
+    const colorPickerBtn = document.getElementById('colorPickerBtn');
+    const magnifier = document.getElementById('magnifier');
+
+    colorPickerBtn.addEventListener('click', () => {
+      magnifier.style.display = 'block';
+      document.addEventListener('mousemove', showMagnifiedColor);
+      document.addEventListener('click', pickColor);
+    });
+
+    function showMagnifiedColor(event) {
+      const magnifierSize = 100;
+      const offsetX = magnifierSize / 2;
+      const offsetY = magnifierSize / 2;
+      const x = event.clientX;
+      const y = event.clientY;
+
+      const magnifierX = x - offsetX;
+      const magnifierY = y - offsetY;
+
+      magnifier.style.left = magnifierX + 'px';
+      magnifier.style.top = magnifierY + 'px';
+
+      const pixelColor = getPixelColor(x, y);
+      magnifier.style.backgroundColor = `rgb(${pixelColor.r}, ${pixelColor.g}, ${pixelColor.b})`;
+    }
+
+    function getPixelColor(x, y) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1;
+      canvas.height = 1;
+      const context = canvas.getContext('2d');
+      context.drawImage(document.body, -x, -y, 1, 1, 0, 0, 1, 1);
+      const pixel = context.getImageData(0, 0, 1, 1).data;
+      return { r: pixel[0], g: pixel[1], b: pixel[2] };
+    }
+
+    function pickColor(event) {
+      const pixelColor = getPixelColor(event.clientX, event.clientY);
+      console.log(`Picked color: rgb(${pixelColor.r}, ${pixelColor.g}, ${pixelColor.b})`);
+
+      magnifier.style.display = 'none';
+      document.removeEventListener('mousemove', showMagnifiedColor);
+      document.removeEventListener('click', pickColor);
+    }
+  </script>
+</body>
+</html>

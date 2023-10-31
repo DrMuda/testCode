@@ -1,4 +1,5 @@
-var numList = [
+"use strict";
+const numList = [
     1,
     2,
     26 * 1 + 0,
@@ -10,26 +11,28 @@ var numList = [
     26 * 3 + 0,
     26 * 3 + 1,
     26 * 3 + 2,
+    26 * 26 + 0,
+    26 * 26 + 1,
+    26 * 26 + 2,
+    26 * 27 + 0,
+    26 * 27 + 1,
+    26 * 27 + 2,
+    26 * 28 + 0,
+    26 * 28 + 1,
+    26 * 28 + 2,
 ];
-var charMaxCount = 26;
-var charACode = 65;
-var strList = numList.map(function (num) {
-    var charCodeList = [0, num];
-    while (charCodeList.findIndex(function (charCode) { return charCode > 26; }) > -1) {
-        for (var i = charCodeList.length - 1; i >= 0; i--) {
-            var charCode = charCodeList[i];
-            if (charCode > 26) {
-                var remainder = charCode % charMaxCount;
-                var quotient = charCode / charMaxCount;
-                charCodeList[i] = remainder;
-                charCodeList[i - 1] = quotient;
-                charCodeList.unshift(0);
-                continue;
-            }
-        }
+const charMaxCount = 26;
+const charACode = 65;
+const strList = numList.map((num) => {
+    const charCodeList = [num];
+    while (charCodeList[0] > 26) {
+        const remainder = charCodeList[0] % charMaxCount || 26;
+        const quotient = Math.floor((charCodeList[0] - 0.1) / charMaxCount);
+        charCodeList[0] = remainder;
+        charCodeList.unshift(quotient);
     }
     return charCodeList
-        .map(function (charCode) { return String.fromCharCode(charACode + charCode); })
+        .map((charCode) => String.fromCharCode(charACode + charCode - 1))
         .join("");
 });
 console.log(strList);

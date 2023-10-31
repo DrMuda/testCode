@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button onclick="startDownload()" >startDownload</button>
+    <script src="https://jimmywarting.github.io/StreamSaver.js/examples/zip-stream.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.3/StreamSaver.min.js"></script>
+    <script>
+      /**
+       * 同步下载打包【推荐】
+       * @param zipName 压缩包文件名
+       * @param files 文件列表，格式：[{"name":"文件名", "url":"文件下载地址"},……]
+       */
+      function zipFiles(zipName, files) {
+        console.log("同步下载打包开始时间：" + new Date());
+        // 创建压缩文件输出流
+        const zipFileOutputStream = streamSaver.createWriteStream(zipName);
+        // 创建下载文件流
+        const fileIterator = files.values();
+        const readableZipStream = new ZIP({
+          async pull(ctrl) {
+            const fileInfo = fileIterator.next();
+            if (fileInfo.done) {
+              //迭代终止
+              ctrl.close();
+            } else {
+              const { name, url } = fileInfo.value;
+              return fetch(url).then((res) => {
+                ctrl.enqueue({
+                  name,
+                  stream: () => res.body,
+                });
+              });
+            }
+          },
+        });
+        if (window.WritableStream && readableZipStream.pipeTo) {
+          // 开始下载
+          readableZipStream
+            .pipeTo(zipFileOutputStream)
+            .then(() => console.log("同步下载打包结束时间：" + new Date()));
+        }
+      }
+      function startDownload() {
+        let zipName = "压缩包.zip";
+        let files = [
+          { name: "2022102801.xlsx", url: "https://supply-chain-1307444343.cos.ap-guangzhou.myqcloud.com/system/%E5%87%BA%E5%85%A5%E5%BA%93%E6%98%8E%E7%BB%86%E6%A8%A1%E6%9D%BF.xlsx" },
+          {
+            name: "文件夹1/2022102802.xlsx",
+            url: "https://supply-chain-1307444343.cos.ap-guangzhou.myqcloud.com/system/%E6%A0%B7%E5%93%81%E5%BD%95%E5%85%A5%E6%A8%A1%E6%9D%BF.xlsx",
+          },
+          {
+            name: "文件夹1/2022102803.xlsx",
+            url: "https://supply-chain-1307444343.cos.ap-guangzhou.myqcloud.com/system/%E7%9B%98%E7%82%B9%E5%BA%93%E5%AD%98%E8%A1%A8%E6%A8%A1%E6%9D%BF.xlsx",
+          },
+          {
+            name: "文件夹3/文件夹3/文件夹3/2022102804.xlsx",
+            url: "https://supply-chain-1307444343.cos.ap-guangzhou.myqcloud.com/system/%E8%BF%90%E8%BE%93%E5%BD%95%E5%85%A5%E6%A8%A1%E6%9D%BF.xlsx",
+          },
+        ];
+        zipFiles(zipName, files);
+      }
+    </script>
+  </body>
+</html>

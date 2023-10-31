@@ -1,6 +1,7 @@
 const arr = [
   {
     display: "table-header-group",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -8,6 +9,7 @@ const arr = [
   },
   {
     display: "table",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -15,6 +17,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "sticky",
     overflow: "hidden",
     overflowX: "hidden",
     overflowY: "hidden",
@@ -22,6 +25,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -29,13 +33,15 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
-    className: "ant-table ant-table-middle",
+    className: "ant-table ant-table-middle ant-table-scroll-horizontal",
   },
   {
     display: "block",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -43,6 +49,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -50,6 +57,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -57,6 +65,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -64,6 +73,7 @@ const arr = [
   },
   {
     display: "flex",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -71,6 +81,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -78,6 +89,7 @@ const arr = [
   },
   {
     display: "table-cell",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -85,6 +97,7 @@ const arr = [
   },
   {
     display: "table-row",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -92,6 +105,7 @@ const arr = [
   },
   {
     display: "table-row-group",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -99,6 +113,7 @@ const arr = [
   },
   {
     display: "table",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -106,13 +121,15 @@ const arr = [
   },
   {
     display: "block",
-    overflow: "visible",
-    overflowX: "visible",
-    overflowY: "visible",
+    position: "static",
+    overflow: "auto hidden",
+    overflowX: "auto",
+    overflowY: "hidden",
     className: "ant-table-body",
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -120,13 +137,15 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
-    className: "ant-table ant-table-middle",
+    className: "ant-table ant-table-middle ant-table-scroll-horizontal",
   },
   {
     display: "block",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -134,6 +153,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -141,6 +161,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -148,6 +169,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -155,6 +177,7 @@ const arr = [
   },
   {
     display: "flex",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -162,6 +185,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -169,6 +193,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -176,6 +201,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -183,6 +209,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "relative",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -190,6 +217,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -197,6 +225,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -204,6 +233,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -211,6 +241,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "relative",
     overflow: "hidden auto",
     overflowX: "hidden",
     overflowY: "auto",
@@ -218,6 +249,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -225,6 +257,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
@@ -232,6 +265,7 @@ const arr = [
   },
   {
     display: "block",
+    position: "static",
     overflow: "visible",
     overflowX: "visible",
     overflowY: "visible",
